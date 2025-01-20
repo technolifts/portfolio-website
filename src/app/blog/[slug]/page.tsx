@@ -1,3 +1,4 @@
+// src/app/blog/[slug]/page.tsx
 import { Metadata } from 'next';
 import ReactMarkdown from 'react-markdown';
 import { notFound } from 'next/navigation';

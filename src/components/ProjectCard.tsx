@@ -1,3 +1,4 @@
+// src/components/ProjectCard.tsx
 import { CodeBracketIcon, GlobeAltIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 import type { Project } from '@/content/projects';

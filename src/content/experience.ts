@@ -1,3 +1,4 @@
+// src/content.experiences.ts
 export interface Experience {
     id: string;
     title: string;

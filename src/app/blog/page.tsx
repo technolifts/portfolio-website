@@ -1,4 +1,4 @@
-import Header from '@/components/Header';
+// src/app/blog/page.tsx
 import BlogCard from '@/components/BlogCard';
 import { getAllPosts } from '@/lib/blog';
 

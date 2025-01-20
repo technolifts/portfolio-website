@@ -1,3 +1,4 @@
+// src/components/BlogCard.tsx
 import Link from 'next/link';
 import { CalendarIcon, ClockIcon } from '@heroicons/react/24/outline';
 import type { BlogPost } from '@/types/blog';

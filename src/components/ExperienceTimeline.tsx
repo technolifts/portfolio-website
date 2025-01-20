@@ -1,3 +1,4 @@
+// src/components/ExperienceTimeline.tsx
 import { BriefcaseIcon, CalendarIcon, MapPinIcon } from '@heroicons/react/24/outline';
 import type { Experience } from '@/content/experience';
 
