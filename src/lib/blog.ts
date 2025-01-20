@@ -37,3 +37,9 @@ export function getAllPosts() {
     .sort((post1, post2) => (new Date(post2.date) as any) - (new Date(post1.date) as any));
   return posts;
 }
+
+export function sortByDate(posts: BlogPost[]): BlogPost[] {
+    return posts.sort(
+        (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+    );
+}

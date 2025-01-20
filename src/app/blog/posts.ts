@@ -3,7 +3,7 @@ import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 import { BlogPost } from '@/types/blog'; // Assuming your blog type
-import {sortByDate} from '@/lib/blog'
+import { sortByDate } from '@/lib/blog'
 
 const postsDirectory = path.join(process.cwd(), 'content/blog');
 

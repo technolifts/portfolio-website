@@ -1,32 +1,36 @@
 // src/components/ThemeToggle.tsx
-'use client'
+'use client';
 import { useState, useEffect } from 'react';
+import { useTheme } from 'next-themes';
 import { MoonIcon, SunIcon } from 'lucide-react';
 
 export default function ThemeToggle() {
-    const [theme, setTheme] = useState<'light' | 'dark'>('light');
-    
+    const [mounted, setMounted] = useState(false);
+    const { theme, setTheme } = useTheme();
+
     useEffect(() => {
-      const storedTheme = localStorage.getItem('theme');
-        if (storedTheme) {
-            setTheme(storedTheme === 'dark' ? 'dark' : 'light');
-            document.documentElement.classList.toggle('dark', storedTheme === 'dark');
-        }
+      setMounted(true);
     }, []);
-    
-    const toggleTheme = () => {
-        const newTheme = theme === 'light' ? 'dark' : 'light';
-        setTheme(newTheme);
-        document.documentElement.classList.toggle('dark', newTheme === 'dark');
-        localStorage.setItem('theme', newTheme);
-      };
-  
+
+  if (!mounted) {
+        return null;
+  }
+
+  const toggleTheme = () => {
+        setTheme(theme === 'light' ? 'dark' : 'light')
+    };
+
     return (
-      <button
-          onClick={toggleTheme}
-            className="text-terminal-text dark:text-terminal-text-dark hover:text-terminal-accent dark:hover:text-terminal-accent-dark"
-      >
-            {theme === 'light' ? <MoonIcon className="h-5 w-5" /> : <SunIcon className="h-5 w-5" />}
-      </button>
+        <button
+            onClick={toggleTheme}
+            aria-label="Toggle Dark Mode"
+            className="p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-accent"
+        >
+        {theme === 'dark' ? (
+                <SunIcon className="h-5 w-5 text-gray-400 hover:text-gray-100 transition-colors"/>
+            ) : (
+                <MoonIcon className="h-5 w-5 text-gray-400 hover:text-gray-100 transition-colors"/>
+            )}
+        </button>
     );
 }

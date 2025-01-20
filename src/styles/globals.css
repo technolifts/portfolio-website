@@ -4,78 +4,96 @@
 @tailwind utilities;
 
 @layer base {
- body {
-    @apply bg-gray-900 text-gray-100; /* Dark background, light text by default */
-    background-image: radial-gradient(circle, rgba(40,40,40,0.5) 0%, rgba(0,0,0,0.8) 100%);
+  body {
+    @apply bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100; /* Dark background, light text by default */
+    background-image: radial-gradient(circle, rgba(40, 40, 40, 0.5) 0%, rgba(0, 0, 0, 0.8) 100%);
     font-family: 'Roboto', sans-serif;
-   }
-
-  h1, h2, h3, h4, h5, h6{
-      font-family: 'Fira Code', monospace;
-      @apply font-bold mb-4;
   }
-  
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: 'Fira Code', monospace;
+    @apply font-bold mb-4;
+  }
+
   h1 {
-     @apply text-5xl ;
-   }
-  
+    @apply text-5xl;
+  }
+
   h2 {
     @apply text-4xl;
   }
-  
-   h3 {
-     @apply text-3xl;
-   }
 
-   p {
-    @apply mb-4 text-gray-300;
-   }
-  
- }
-
-@layer components {
- .container {
-   @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
- }
-
- .button {
-   @apply px-4 py-2 rounded-md bg-accent text-black hover:bg-accent/90 transition-colors;
-     border: 2px solid transparent; /* Initial transparent border */
-     box-shadow: 0 0 0 2px #52b788; /* Green outline on hover */
-   }
-   .button:hover {
-     border-color: #52b788; /* Green outline on hover */
-     box-shadow: 0 0 0 2px transparent;
-   }
-
-  .card {
-   @apply bg-gray-800 rounded-lg shadow-md p-6 transition-all duration-300 ease-in-out; /* Dark card with transition */
+  h3 {
+    @apply text-3xl;
   }
 
-   .card:hover{
-        transform: translateY(-3px);
-        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-   }
+  p {
+    @apply mb-4 text-gray-600 dark:text-gray-300;
+  }
+}
+
+@layer components {
+  .container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .button {
+    @apply px-4 py-2 rounded-md bg-accent text-black hover:bg-accent/90 transition-colors;
+    border: 2px solid transparent;
+    /* Initial transparent border */
+    box-shadow: 0 0 0 2px #52b788;
+    /* Green outline on hover */
+  }
+
+  .button:hover {
+    border-color: #52b788;
+    /* Green outline on hover */
+    box-shadow: 0 0 0 2px transparent;
+  }
+
+  .card {
+    @apply bg-gray-100 dark:bg-gray-800 rounded-lg shadow-md p-6 transition-all duration-300 ease-in-out; /* Dark card with transition */
+  }
+
+  .card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  }
 }
 
 @layer utilities {
- .text-terminal-text-light {
-     color: #a8ff78; /* bright green */
-   }
+  .text-terminal-text-light {
+    color: #a8ff78;
+    /* bright green */
+  }
 
-   .text-terminal-text-light-dark{
-        color: #52b788; /* dark green */
-   }
+  .text-terminal-text-light-dark {
+    color: #52b788;
+    /* dark green */
+  }
 
-   .skeleton-loading {
-        background: linear-gradient(90deg, #222, #444, #222);
-        background-size: 200% 200%;
-        animation: skeleton-gradient 1.5s linear infinite;
-     }
+  .skeleton-loading {
+    background: linear-gradient(90deg, #222, #444, #222);
+    background-size: 200% 200%;
+    animation: skeleton-gradient 1.5s linear infinite;
+  }
 
-     @keyframes skeleton-gradient {
-        0% { background-position: 0% 50%; }
-        50% { background-position: 100% 50%; }
-        100% { background-position: 0% 50%; }
-     }
+  @keyframes skeleton-gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+
+    50% {
+      background-position: 100% 50%;
+    }
+
+    100% {
+      background-position: 0% 50%;
+    }
+  }
 }
