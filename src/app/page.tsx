@@ -1,101 +1,104 @@
-import Image from "next/image";
+import Link from 'next/link'
+import Header from '@/components/Header'
+import { ArrowRightIcon, CodeBracketIcon, ShieldCheckIcon, DocumentTextIcon } from '@heroicons/react/24/outline'
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <div className="min-h-screen">
+      <Header />
+      
+      <main className="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        {/* Hero Section */}
+        <section className="text-center mb-16">
+          <h1 className="text-5xl font-bold mb-4">
+            Security & Software Engineer
+          </h1>
+          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+            Building secure, scalable solutions and sharing knowledge about cybersecurity and software development.
+          </p>
+        </section>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+        {/* Featured Sections */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+          {/* Projects */}
+          <div className="card hover:shadow-lg transition-shadow">
+            <div className="flex items-center mb-4">
+              <CodeBracketIcon className="h-6 w-6 text-accent mr-2" />
+              <h2 className="text-2xl font-semibold">Projects</h2>
+            </div>
+            <p className="text-gray-600 dark:text-gray-300 mb-4">
+              Explore my latest work in software development and security solutions.
+            </p>
+            <Link 
+              href="/projects"
+              className="inline-flex items-center text-accent hover:text-accent/80"
+            >
+              View Projects
+              <ArrowRightIcon className="h-4 w-4 ml-1" />
+            </Link>
+          </div>
+
+          {/* Experience */}
+          <div className="card hover:shadow-lg transition-shadow">
+            <div className="flex items-center mb-4">
+              <ShieldCheckIcon className="h-6 w-6 text-accent mr-2" />
+              <h2 className="text-2xl font-semibold">Experience</h2>
+            </div>
+            <p className="text-gray-600 dark:text-gray-300 mb-4">
+              My journey through security engineering and software development.
+            </p>
+            <Link 
+              href="/experience"
+              className="inline-flex items-center text-accent hover:text-accent/80"
+            >
+              View Experience
+              <ArrowRightIcon className="h-4 w-4 ml-1" />
+            </Link>
+          </div>
+
+          {/* Blog */}
+          <div className="card hover:shadow-lg transition-shadow">
+            <div className="flex items-center mb-4">
+              <DocumentTextIcon className="h-6 w-6 text-accent mr-2" />
+              <h2 className="text-2xl font-semibold">Blog</h2>
+            </div>
+            <p className="text-gray-600 dark:text-gray-300 mb-4">
+              Thoughts and insights on security, development, and best practices.
+            </p>
+            <Link 
+              href="/blog"
+              className="inline-flex items-center text-accent hover:text-accent/80"
+            >
+              Read Blog
+              <ArrowRightIcon className="h-4 w-4 ml-1" />
+            </Link>
+          </div>
         </div>
+
+        {/* About Section */}
+        <section className="card max-w-3xl mx-auto">
+          <h2 className="text-2xl font-semibold mb-4">About Me</h2>
+          <p className="text-gray-600 dark:text-gray-300">
+            I'm a Security and Software Engineer passionate about building secure, efficient solutions. 
+            With expertise in both offensive and defensive security practices, I help organizations protect 
+            their digital assets while delivering high-quality software.
+          </p>
+          <div className="mt-6 flex flex-wrap gap-4">
+            <Link 
+              href="/experience"
+              className="button"
+            >
+              View My Experience
+            </Link>
+            <Link 
+              href="/projects"
+              className="button bg-gray-200 text-gray-900 hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-100"
+            >
+              Explore Projects
+            </Link>
+          </div>
+        </section>
       </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
     </div>
-  );
+  )
 }
