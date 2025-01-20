@@ -1,11 +1,23 @@
-// src/app/page.tsx
-import Link from 'next/link'
-import { ArrowRightIcon, CodeBracketIcon, ShieldCheckIcon, DocumentTextIcon } from '@heroicons/react/24/outline'
+import Link from 'next/link';
+import {
+  ArrowRightIcon,
+  CodeBracketIcon,
+  ShieldCheckIcon,
+  DocumentTextIcon,
+} from '@heroicons/react/24/outline';
+import ProjectCard from '@/components/ProjectCard';
+import ExperienceTimeline from '@/components/ExperienceTimeline';
+import BlogCard from '@/components/BlogCard';
+import { projects } from '@/content/projects';
+import { experiences } from '@/content/experience';
+import { getAllPosts } from '@/lib/blog';
 
 export default function Home() {
+  const featuredProjects = projects.filter((project) => project.featured);
+  const posts = getAllPosts();
+
   return (
     <div className="min-h-screen">
-      
       <main className="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
         {/* Hero Section */}
         <section className="text-center mb-16">
@@ -13,83 +25,87 @@ export default function Home() {
             Security & Software Engineer
           </h1>
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-            Building secure, scalable solutions and sharing knowledge about cybersecurity and software development.
+            Building secure, scalable solutions and sharing knowledge about
+            cybersecurity and software development.
           </p>
         </section>
 
         {/* Featured Sections */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-          {/* Projects */}
-          <div className="card hover:shadow-lg transition-shadow">
-            <div className="flex items-center mb-4">
-              <CodeBracketIcon className="h-6 w-6 text-accent mr-2" />
-              <h2 className="text-2xl font-semibold">Projects</h2>
-            </div>
-            <p className="text-gray-600 dark:text-gray-300 mb-4">
-              Explore my latest work in software development and security solutions.
-            </p>
-            <Link 
-              href="/projects"
-              className="inline-flex items-center text-accent hover:text-accent/80"
-            >
-              View Projects
-              <ArrowRightIcon className="h-4 w-4 ml-1" />
-            </Link>
+        {/* Projects Section */}
+        <section className="mb-16">
+          <div className="flex items-center mb-8">
+            <CodeBracketIcon className="h-6 w-6 text-accent mr-2" />
+            <h2 className="text-3xl font-semibold">Featured Projects</h2>
           </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {featuredProjects.map((project) => (
+              <ProjectCard key={project.id} project={project} />
+            ))}
+          </div>
+           <div className="mt-6 text-center">
+                <Link
+                   href="/projects"
+                   className="button"
+                >
+                    View All Projects
+                </Link>
+           </div>
+        </section>
 
-          {/* Experience */}
-          <div className="card hover:shadow-lg transition-shadow">
-            <div className="flex items-center mb-4">
-              <ShieldCheckIcon className="h-6 w-6 text-accent mr-2" />
-              <h2 className="text-2xl font-semibold">Experience</h2>
-            </div>
-            <p className="text-gray-600 dark:text-gray-300 mb-4">
-              My journey through security engineering and software development.
-            </p>
-            <Link 
-              href="/experience"
-              className="inline-flex items-center text-accent hover:text-accent/80"
-            >
-              View Experience
-              <ArrowRightIcon className="h-4 w-4 ml-1" />
-            </Link>
+        {/* Blog Section */}
+        <section className="mb-16">
+          <div className="flex items-center mb-8">
+            <DocumentTextIcon className="h-6 w-6 text-accent mr-2" />
+            <h2 className="text-3xl font-semibold">Blog</h2>
           </div>
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            {posts.slice(0, 3).map((post) => (
+              <BlogCard key={post.slug} post={post} />
+            ))}
+          </div>
+          <div className="mt-6 text-center">
+              <Link
+                href="/blog"
+                className="button"
+              >
+                View All Posts
+              </Link>
+           </div>
+        </section>
 
-          {/* Blog */}
-          <div className="card hover:shadow-lg transition-shadow">
-            <div className="flex items-center mb-4">
-              <DocumentTextIcon className="h-6 w-6 text-accent mr-2" />
-              <h2 className="text-2xl font-semibold">Blog</h2>
-            </div>
-            <p className="text-gray-600 dark:text-gray-300 mb-4">
-              Thoughts and insights on security, development, and best practices.
-            </p>
-            <Link 
-              href="/blog"
-              className="inline-flex items-center text-accent hover:text-accent/80"
-            >
-              Read Blog
-              <ArrowRightIcon className="h-4 w-4 ml-1" />
-            </Link>
+        {/* Experience Section */}
+        <section className="mb-16">
+          <div className="flex items-center mb-8">
+            <ShieldCheckIcon className="h-6 w-6 text-accent mr-2" />
+            <h2 className="text-3xl font-semibold">Experience</h2>
           </div>
-        </div>
+          <div className="max-w-4xl mx-auto">
+            <ExperienceTimeline experiences={experiences} />
+          </div>
+           <div className="mt-6 text-center">
+                <Link
+                   href="/experience"
+                   className="button"
+                >
+                    View All Experience
+                </Link>
+           </div>
+        </section>
 
         {/* About Section */}
         <section className="card max-w-3xl mx-auto">
           <h2 className="text-2xl font-semibold mb-4">About Me</h2>
           <p className="text-gray-600 dark:text-gray-300">
-            I'm a Security and Software Engineer passionate about building secure, efficient solutions. 
-            With expertise in both offensive and defensive security practices, I help organizations protect 
-            their digital assets while delivering high-quality software.
+            I'm a Security and Software Engineer passionate about building secure,
+            efficient solutions. With expertise in both offensive and defensive
+            security practices, I help organizations protect their digital assets
+            while delivering high-quality software.
           </p>
           <div className="mt-6 flex flex-wrap gap-4">
-            <Link 
-              href="/experience"
-              className="button"
-            >
+            <Link href="/experience" className="button">
               View My Experience
             </Link>
-            <Link 
+            <Link
               href="/projects"
               className="button bg-gray-200 text-gray-900 hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-100"
             >
@@ -99,5 +115,5 @@ export default function Home() {
         </section>
       </main>
     </div>
-  )
+  );
 }
