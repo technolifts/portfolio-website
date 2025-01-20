@@ -1,11 +1,9 @@
 import Link from 'next/link'
-import Header from '@/components/Header'
 import { ArrowRightIcon, CodeBracketIcon, ShieldCheckIcon, DocumentTextIcon } from '@heroicons/react/24/outline'
 
 export default function Home() {
   return (
     <div className="min-h-screen">
-      <Header />
       
       <main className="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
         {/* Hero Section */}
