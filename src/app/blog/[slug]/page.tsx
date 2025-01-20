@@ -44,7 +44,6 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
 
   return (
     <div>
-      <Header />
       
       <main className="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <article className="max-w-3xl mx-auto">

@@ -9,9 +9,10 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: '#0f172a',
-        secondary: '#64748b',
-        accent: '#3b82f6'
+        accent: '#52b788'
+      },
+      fontFamily: {
+        'fira-code': ['Fira Code', 'monospace'],
       },
     },
   },
