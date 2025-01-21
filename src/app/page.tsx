@@ -22,11 +22,8 @@ export default async function Home() {
         {/* Hero Section */}
         <section className="text-center mb-16">
           <div className="flex justify-center items-center space-x-8">
-            <h1 className="text-5xl font-bold text-gray-900 dark:text-gray-100">
-              Hi, I&apos;m
-            </h1>
-            <h1 className="text-5xl font-bold text-accent">
-              Ryan Carroll
+            <h1 className="text-5xl font-semibold text-gray-800 dark:text-white">
+              Hi, I&apos;m <span className="text-accent">Ryan Carroll</span>
             </h1>
           </div>
           <h3 className="text-3xl font-bold text-gray-800 dark:text-gray-200">Software Engineering / Cyber Security / Product</h3>
