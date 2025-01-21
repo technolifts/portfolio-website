@@ -23,7 +23,7 @@ export interface Experience {
         'Automated the process for enrolling engineers in technical security training. Helping 20,000 learners get enrolled in role-based security training in 10% of the time it would take manually.',
         'Managed Adobe’s Security Champion Program consisting of over 400 champions across all solutions at Adobe to effectively scale security across the company. ',
         'Pioneered the security-developer relations by effectively portraying why security matters, and how to impliment it to different engineering teams across Adobe',
-        'Contributed on the Cloud Security Team to find areas of biggest impact to recommend policies and react to real time threats'
+        'Collaborated with the Cloud Security Team to identify high-impact areas, recommend effective policies, and respond to real-time threats efficiently.'
       ],
       technologies: ['AWS', 'Python', 'Terraform', 'Wiz', 'Databricks', 'GitHub', 'SQL'],
       type: 'security'
