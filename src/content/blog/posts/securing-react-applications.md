@@ -2,7 +2,7 @@
 title: "DevSecOps: Integrating Security into the Development Lifecycle"
 date: "2024-09-20"
 excerpt: "A comprehensive guide of what I learned from the TryHackMe DevSecOps learning Path"
-tags: ["React", "Security", "Web Development", "JavaScript"]
+tags: ["DevSecOps", "Security", "IaC", "CI/CD Security"]
 ---
 # DevSecOps: Integrating Security into the Development Lifecycle
 
