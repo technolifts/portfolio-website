@@ -1,4 +1,3 @@
-// src/lib/blog.ts
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
@@ -11,7 +10,7 @@ export function getPostSlugs() {
   return fs.readdirSync(postsDirectory);
 }
 
-export function getPostBySlug(slug: string) {
+export async function getPostBySlug(slug: string) {
   const realSlug = slug.replace(/\.md$/, '');
   const fullPath = path.join(postsDirectory, `${realSlug}.md`);
   const fileContents = fs.readFileSync(fullPath, 'utf8');
@@ -30,12 +29,22 @@ export function getPostBySlug(slug: string) {
   } as BlogPost;
 }
 
-export function getAllPosts() {
-  const slugs = getPostSlugs();
-  const posts = slugs
-    .map((slug) => getPostBySlug(slug))
-    .sort((post1, post2) => (new Date(post2.date) as any) - (new Date(post1.date) as any));
-  return posts;
+export async function getAllPosts() {
+    const slugs = getPostSlugs();
+
+    // Use Promise.all to resolve all promises returned by getPostBySlug
+    const posts = await Promise.all(
+        slugs.map(async (slug) => {
+        // Await the result of getPostBySlug for each slug
+        const post = await getPostBySlug(slug);
+        return post;
+        })
+    );
+
+    // Sort the posts by date
+    return posts.sort((post1, post2) => {
+        return new Date(post2.date).getTime() - new Date(post1.date).getTime();
+    });
 }
 
 export function sortByDate(posts: BlogPost[]): BlogPost[] {

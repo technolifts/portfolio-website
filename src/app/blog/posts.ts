@@ -15,7 +15,7 @@ export function getAllPosts(): BlogPost[] {
     const filePath = path.join(postsDirectory, filename);
     const fileContents = fs.readFileSync(filePath, 'utf8');
 
-    const { data, content } = matter(fileContents);
+    const { data } = matter(fileContents);
 
     return {
        slug,

@@ -13,7 +13,7 @@ return (
         <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-gray-700" />
 
         <div className="space-y-12">
-        {experiences.map((experience, index) => (
+        {experiences.map((experience) => (
             <div key={experience.id} className="relative pl-12">
             {/* Timeline dot */}
             <div className="absolute left-0 top-0 w-8 h-8 bg-accent rounded-full flex items-center justify-center">

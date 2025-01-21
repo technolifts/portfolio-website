@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import {
-  ArrowRightIcon,
   CodeBracketIcon,
   ShieldCheckIcon,
   DocumentTextIcon,
@@ -12,9 +11,10 @@ import { projects } from '@/content/projects';
 import { experiences } from '@/content/experience';
 import { getAllPosts } from '@/lib/blog';
 
-export default function Home() {
+
+export default async function Home() {
   const featuredProjects = projects.filter((project) => project.featured);
-  const posts = getAllPosts();
+  const posts = await getAllPosts();
 
   return (
     <div className="min-h-screen">
@@ -23,7 +23,7 @@ export default function Home() {
         <section className="text-center mb-16">
           <div className="flex justify-center items-center space-x-8">
             <h1 className="text-5xl font-bold">
-              Hi, I'm 
+              Hi, I&apos;m
             </h1>
             <h1 className="text-5xl font-bold text-accent">
               Ryan Carroll
@@ -47,8 +47,8 @@ export default function Home() {
           {/* Intros */}
           <div className="mb-8 text-center">
             <p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed max-w-4xl mx-auto">
-              Looking for big opportunities that will put me in situations of exponential growth and learning. I'm always ready for a challenge.
-              I'm inspired by the little wins, my mentors, and people I admire.
+            Looking for big opportunities that will put me in situations of exponential growth and learning. I&apos;m always ready for a challenge.
+            I&apos;m inspired by the little wins, my mentors, and people I admire.
             </p>
           </div>
 
@@ -56,7 +56,7 @@ export default function Home() {
           {/* Areas of Interest */}
           <div className="mb-8">
             <h3 className="text-2xl font-semibold text-gray-800 dark:text-white mb-4">
-              Areas I'm Interested In
+              Areas I&apos;m Interested In
             </h3>
             <div className="flex flex-wrap gap-4">
               {['AI Implementation', 'Cloud and AI Security', 'Building Web Apps'].map((area) => (
@@ -90,14 +90,14 @@ export default function Home() {
           {/* Giving Back */}
           <div>
             <h3 className="text-2xl font-semibold text-gray-800 dark:text-white mb-4">
-              How I'm Giving Back
+              How I&apos;m Giving Back
             </h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
               <div className="bg-gray-900 text-gray-200 p-6 rounded-lg shadow-md border border-accent">
                 <h5 className="text-xl font-semibold mb-2">Volunteer at Cyber Peace Institute:</h5> Helping NGOs improve their security posture.
               </div>
               <div className="bg-gray-900 text-gray-200 p-6 rounded-lg shadow-md border border-accent">
-                <h5 className="text-xl font-semibold mb-2">Mentor at University of Washington's iSchool:</h5> Guiding university students to achieve their goals.
+                <h5 className="text-xl font-semibold mb-2">Mentor at University of Washington&apos;s iSchool:</h5> Guiding university students to achieve their goals.
               </div>
               <div className="bg-gray-900 text-gray-200 p-6 rounded-lg shadow-md border border-accent">
                 <h5 className="text-xl font-semibold mb-2">Vice President at Cloud Security Alliance:</h5> Building a community of cloud security practitioners.

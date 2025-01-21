@@ -3,7 +3,6 @@ import ProjectCard from '@/components/ProjectCard';
 import { projects } from '@/content/projects';
 
 export default function ProjectsPage() {
-  const featured = projects.filter(project => project.featured);
   
   return (
     <div>

@@ -3,19 +3,21 @@ import { Metadata } from 'next';
 import ReactMarkdown from 'react-markdown';
 import { notFound } from 'next/navigation';
 import { CalendarIcon, ClockIcon, ArrowLeftIcon } from '@heroicons/react/24/outline';
-import Header from '@/components/Header';
 import { getAllPosts, getPostBySlug } from '@/lib/blog';
 import Link from 'next/link';
 
-interface BlogPostPageProps {
-  params: {
-    slug: string;
-  };
+// Update the props interface to match Next.js requirements
+type Props = {
+  params: Promise<{ slug: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }
 
-export async function generateMetadata({ params }: BlogPostPageProps): Promise<Metadata> {
+// Update the generateMetadata function with the correct Props type
+export async function generateMetadata(
+    { params }: Props): Promise<Metadata> {
   try {
-    const post = getPostBySlug(params.slug);
+    const slug = (await params).slug
+    const post = await getPostBySlug(slug);
     return {
       title: `${post.title} | Your Name`,
       description: post.excerpt,
@@ -28,24 +30,30 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
   }
 }
 
+// Static params generation remains the same
 export async function generateStaticParams() {
-  const posts = getAllPosts();
+  const posts = await getAllPosts();
   return posts.map((post) => ({
     slug: post.slug,
   }));
 }
 
-export default function BlogPostPage({ params }: BlogPostPageProps) {
+// Update the page component with the correct Props type
+export default async function BlogPostPage({ params }: Props) {
   let post;
   try {
-    post = getPostBySlug(params.slug);
+    const slug = (await params).slug
+    post = await getPostBySlug(slug);
   } catch {
+    notFound();
+  }
+
+  if (!post) {
     notFound();
   }
 
   return (
     <div>
-      
       <main className="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <article className="max-w-3xl mx-auto">
           <Link 
