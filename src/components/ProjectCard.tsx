@@ -59,7 +59,7 @@ return (
             className="inline-flex items-center text-accent hover:text-accent/80"
             >
             <GlobeAltIcon className="h-5 w-5 mr-1" />
-            Live Demo
+            Learn More
             </Link>
         )}
         </div>

@@ -17,7 +17,7 @@ return (
                 scalable solutions and sharing knowledge with the community.
             </p>
             <p className="text-gray-300">
-                ryan.acarroll@yahoo.com
+                <strong>Email:</strong> $myFirstName.acarroll@yahoo.com
             </p>
             </div>
             

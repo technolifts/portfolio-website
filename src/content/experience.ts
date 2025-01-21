@@ -14,33 +14,34 @@ export interface Experience {
   export const experiences: Experience[] = [
     {
       id: 'current-role',
-      title: 'Senior Security Engineer',
-      company: 'Tech Company',
-      location: 'Remote',
-      startDate: '2022',
+      title: 'Engineering Program Manager',
+      company: 'Adobe',
+      location: 'Seattle',
+      startDate: '2024',
       endDate: 'Present',
       description: [
-        'Lead security architecture and implementation for cloud-native applications',
-        'Developed automated security testing pipeline reducing vulnerability detection time by 60%',
-        'Implemented zero-trust architecture across microservices infrastructure'
+        'Automated the process for enrolling engineers in technical security training. Helping 20,000 learners get enrolled in role-based security training in 10% of the time it would take manually.',
+        'Managed Adobe’s Security Champion Program consisting of over 400 champions across all solutions at Adobe to effectively scale security across the company. ',
+        'Pioneered the security-developer relations by effectively portraying why security matters, and how to impliment it to different engineering teams across Adobe',
+        'Contributed on the Cloud Security Team to find areas of biggest impact to recommend policies and react to real time threats'
       ],
-      technologies: ['AWS', 'Kubernetes', 'Python', 'Terraform', 'Docker'],
+      technologies: ['AWS', 'Python', 'Terraform', 'Wiz', 'Databricks', 'GitHub', 'SQL'],
       type: 'security'
     },
     {
-      id: 'previous-role',
-      title: 'Software Engineer',
-      company: 'Software Corp',
-      location: 'San Francisco, CA',
-      startDate: '2020',
-      endDate: '2022',
+      id: 'previous-adobe-role',
+      title: 'Product Security Enablement Specialist',
+      company: 'Adobe',
+      location: 'Seattle',
+      startDate: '2022',
+      endDate: '2024',
       description: [
-        'Built and maintained high-performance REST APIs serving 1M+ daily requests',
-        'Architected and implemented microservices infrastructure',
-        'Led team of 5 developers in modernizing legacy systems'
+        'Created and managed a Security Evangelism program to educate product engineers on top-of-mind Security topics and the Security orgs upcoming initiatives. ',
+        'Developed and deployed two POCs to reduce security specialist response times to security questionaires by 60% and increase deal velocity by 25%. ',
+        'Contributed to the Red Team by operating in Orange Team Campaigns'
       ],
-      technologies: ['Node.js', 'TypeScript', 'PostgreSQL', 'Redis', 'React'],
-      type: 'software'
+      technologies: ['Communications', 'Technical Writing'],
+      type: 'security'
     },
     // Add more experiences as needed
   ];
