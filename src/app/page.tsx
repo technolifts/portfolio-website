@@ -1,3 +1,4 @@
+// src/app/page.tsx
 import Link from 'next/link';
 import {
   CodeBracketIcon,
@@ -11,7 +12,6 @@ import { projects } from '@/content/projects';
 import { experiences } from '@/content/experience';
 import { getAllPosts } from '@/lib/blog';
 
-
 export default async function Home() {
   const featuredProjects = projects.filter((project) => project.featured);
   const posts = await getAllPosts();
@@ -22,19 +22,18 @@ export default async function Home() {
         {/* Hero Section */}
         <section className="text-center mb-16">
           <div className="flex justify-center items-center space-x-8">
-            <h1 className="text-5xl font-bold">
+            <h1 className="text-5xl font-bold text-gray-900 dark:text-gray-100">
               Hi, I&apos;m
             </h1>
             <h1 className="text-5xl font-bold text-accent">
               Ryan Carroll
             </h1>
           </div>
-          <h3 className="text-3xl font-bold">Software Engineering / Cyber Security / Product.</h3>
+          <h3 className="text-3xl font-bold text-gray-800 dark:text-gray-200">Software Engineering / Cyber Security / Product</h3>
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mt-4">
             Using my endless curiosity to make a big impact on peoples lives.
           </p>
         </section>
-
 
         {/* Featured Sections */}
         {/* About Section */}
@@ -47,12 +46,11 @@ export default async function Home() {
           {/* Intros */}
           <div className="mb-8 text-center">
             <p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed max-w-4xl mx-auto">
-            Looking for big opportunities that will put me in situations of exponential growth and learning. I&apos;m always ready for a challenge.
-            I&apos;m inspired by the little wins, my mentors, and people I admire.
+              Looking for big opportunities that will put me in situations of exponential growth and learning. I&apos;m always ready for a challenge.
+              I&apos;m inspired by the little wins, my mentors, and people I admire.
             </p>
           </div>
 
-          
           {/* Areas of Interest */}
           <div className="mb-8">
             <h3 className="text-2xl font-semibold text-gray-800 dark:text-white mb-4">
@@ -69,7 +67,7 @@ export default async function Home() {
               ))}
             </div>
           </div>
-          
+
           {/* Technologies */}
           <div className="mb-8">
             <h3 className="text-2xl font-semibold text-gray-800 dark:text-white mb-4">
@@ -86,34 +84,34 @@ export default async function Home() {
               ))}
             </div>
           </div>
-          
+
           {/* Giving Back */}
           <div>
             <h3 className="text-2xl font-semibold text-gray-800 dark:text-white mb-4">
               How I&apos;m Giving Back
             </h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-              <div className="bg-gray-900 text-gray-200 p-6 rounded-lg shadow-md border border-accent">
-                <h5 className="text-xl font-semibold mb-2">Volunteer at Cyber Peace Institute:</h5> Helping NGOs improve their security posture.
+              <div className="bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200 p-6 rounded-lg shadow-md border border-accent hover:scale-105 hover:shadow-xl transition-all duration-300 ease-in-out hover:bg-gray-100 dark:hover:bg-gray-800">
+                <h5 className="text-xl font-semibold mb-2">Volunteer at Cyber Peace Institute:</h5>
+                Helping NGOs improve their security posture.
               </div>
-              <div className="bg-gray-900 text-gray-200 p-6 rounded-lg shadow-md border border-accent">
-                <h5 className="text-xl font-semibold mb-2">Mentor at University of Washington&apos;s iSchool:</h5> Guiding university students to achieve their goals.
+              <div className="bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200 p-6 rounded-lg shadow-md border border-accent hover:scale-105 hover:shadow-xl transition-all duration-300 ease-in-out hover:bg-gray-100 dark:hover:bg-gray-800">
+                <h5 className="text-xl font-semibold mb-2">Mentor at University of Washington&apos;s iSchool:</h5>
+                Guiding university students to achieve their goals.
               </div>
-              <div className="bg-gray-900 text-gray-200 p-6 rounded-lg shadow-md border border-accent">
-                <h5 className="text-xl font-semibold mb-2">Vice President at Cloud Security Alliance:</h5> Building a community of cloud security practitioners.
+              <div className="bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200 p-6 rounded-lg shadow-md border border-accent hover:scale-105 hover:shadow-xl transition-all duration-300 ease-in-out hover:bg-gray-100 dark:hover:bg-gray-800">
+                <h5 className="text-xl font-semibold mb-2">Vice President at Cloud Security Alliance:</h5>
+                Building a community of cloud security practitioners.
               </div>
             </div>
           </div>
         </section>
 
-
-
-
         {/* Projects Section */}
         <section className="mb-16">
           <div className="flex items-center mb-8">
             <CodeBracketIcon className="h-6 w-6 text-accent mr-2" />
-            <h2 className="text-3xl font-semibold">Featured Projects</h2>
+            <h2 className="text-3xl font-semibold text-gray-800 dark:text-white">Featured Projects</h2>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {featuredProjects.map((project) => (
@@ -134,7 +132,7 @@ export default async function Home() {
         <section className="mb-16">
           <div className="flex items-center mb-8">
             <DocumentTextIcon className="h-6 w-6 text-accent mr-2" />
-            <h2 className="text-3xl font-semibold">Blog</h2>
+            <h2 className="text-3xl font-semibold text-black dark:text-white">Blog</h2>
           </div>
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {posts.slice(0, 3).map((post) => (
@@ -155,7 +153,7 @@ export default async function Home() {
         <section className="mb-16">
           <div className="flex items-center mb-8">
             <ShieldCheckIcon className="h-6 w-6 text-accent mr-2" />
-            <h2 className="text-3xl font-semibold">Experience</h2>
+            <h2 className="text-3xl font-semibold text-gray-800 dark:text-white">Experience</h2>
           </div>
           <div className="max-w-6xl mx-auto">
             <ExperienceTimeline experiences={experiences} />
