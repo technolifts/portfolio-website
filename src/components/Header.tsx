@@ -15,32 +15,6 @@ const navigation = [
 export default function Header() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const pathname = usePathname();
-    const [isDarkMode, setIsDarkMode] = useState(false);
-  
-    // Check user's theme preference on load
-    useEffect(() => {
-      const savedTheme = localStorage.getItem('theme');
-      if (savedTheme) {
-        setIsDarkMode(savedTheme === 'dark');
-        document.documentElement.classList.toggle('dark', savedTheme === 'dark');
-      } else {
-        // Default to dark mode
-        setIsDarkMode(true);
-        document.documentElement.classList.add('dark');
-      }
-    }, []);
-  
-    // Toggle the theme
-    const toggleTheme = () => {
-      setIsDarkMode(!isDarkMode);
-      if (isDarkMode) {
-        document.documentElement.classList.remove('dark');
-        localStorage.setItem('theme', 'light');
-      } else {
-        document.documentElement.classList.add('dark');
-        localStorage.setItem('theme', 'dark');
-      }
-    };
 
   return (
     <header className="bg-gray-100 dark:bg-gray-800 shadow-sm">
