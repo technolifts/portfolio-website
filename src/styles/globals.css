@@ -5,8 +5,10 @@
 
 @layer base {
   body {
-    @apply bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100; /* Dark background, light text by default */
-    background-image: radial-gradient(circle, rgba(40, 40, 40, 0.5) 0%, rgba(0, 0, 0, 0.8) 100%);
+    /*@apply bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100; /* Dark background, light text by default */
+    /*background-image: radial-gradient(circle, rgba(40, 40, 40, 0.5) 0%, rgba(0, 0, 0, 0.8) 100%);*/
+    @apply bg-green-600 text-gray-200;
+    background-color: #777777;
     font-family: 'Roboto', sans-serif;
   }
 

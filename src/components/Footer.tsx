@@ -16,6 +16,9 @@ return (
                 Security & Software Engineer passionate about building secure, 
                 scalable solutions and sharing knowledge with the community.
             </p>
+            <p className="text-gray-300">
+                ryan.acarroll@yahoo.com
+            </p>
             </div>
             
             {/* Quick Links */}
@@ -68,7 +71,7 @@ return (
         </div>
         
         <div className="mt-8 pt-8 border-t border-gray-700 text-center text-gray-300">
-            <p>© {currentYear} Your Name. All rights reserved.</p>
+            <p>© {currentYear} Ryan Carroll. All rights reserved.</p>
         </div>
         </div>
     </footer>

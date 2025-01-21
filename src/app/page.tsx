@@ -21,39 +21,92 @@ export default function Home() {
       <main className="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
         {/* Hero Section */}
         <section className="text-center mb-16">
-          <h1 className="text-5xl font-bold mb-4">
-            Security & Software Engineer
-          </h1>
-          <h1 className="text-5xl font-bold text-accent">
-            Ryan Carroll
-          </h1>
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-            Building secure, scalable solutions and sharing knowledge about
-            cybersecurity and software development.
+          <div className="flex justify-center items-center space-x-8">
+            <h1 className="text-5xl font-bold">
+              Hi, I'm 
+            </h1>
+            <h1 className="text-5xl font-bold text-accent">
+              Ryan Carroll
+            </h1>
+          </div>
+          <h3 className="text-3xl font-bold">Software Engineering / Cyber Security / Product.</h3>
+          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mt-4">
+            Using my endless curiosity to make a big impact on peoples lives.
           </p>
         </section>
 
+
         {/* Featured Sections */}
         {/* About Section */}
-        <section className="card max-w-5xl mx-auto mb-4">
-          <h2 className="text-2xl font-semibold mb-4">About Me</h2>
-          <p className="text-gray-600 dark:text-gray-300">
-            I'm a Security and Software Engineer passionate about building secure,
-            efficient solutions. With expertise in both offensive and defensive
-            security practices, I help organizations protect their digital assets
-            while delivering high-quality software.
-          </p>
-          <div className="mt-6 flex flex-wrap gap-4">
-            <Link href="/experience" className="button">
-              View My Experience
-            </Link>
-            <Link
-              href="/projects"
-              className="button bg-gray-200 text-gray-900 hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-100">
-              Explore Projects
-            </Link>
+        <section className="max-w-6xl mx-auto p-8 bg-white dark:bg-gray-800 shadow-lg rounded-lg mb-12">
+          {/* Header */}
+          <h2 className="text-3xl font-bold text-center mb-6 text-gray-800 dark:text-white">
+            About Me
+          </h2>
+
+          {/* Intros */}
+          <div className="mb-8 text-center">
+            <p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed max-w-4xl mx-auto">
+              Looking for big opportunities that will put me in situations of exponential growth and learning. I'm always ready for a challenge.
+              I'm inspired by the little wins, my mentors, and people I admire.
+            </p>
+          </div>
+
+          
+          {/* Areas of Interest */}
+          <div className="mb-8">
+            <h3 className="text-2xl font-semibold text-gray-800 dark:text-white mb-4">
+              Areas I'm Interested In
+            </h3>
+            <div className="flex flex-wrap gap-4">
+              {['AI Implementation', 'Cloud and AI Security', 'Building Web Apps'].map((area) => (
+                <span
+                  key={area}
+                  className="px-4 py-2 bg-accent text-white rounded-full shadow-md hover:bg-blue-600 transition-transform transform hover:scale-105"
+                >
+                  {area}
+                </span>
+              ))}
+            </div>
+          </div>
+          
+          {/* Technologies */}
+          <div className="mb-8">
+            <h3 className="text-2xl font-semibold text-gray-800 dark:text-white mb-4">
+              Technologies
+            </h3>
+            <div className="flex flex-wrap gap-4">
+              {['Python', 'AWS', 'Terraform', 'Django', 'SQL'].map((tech) => (
+                <span
+                  key={tech}
+                  className="px-4 py-2 bg-accent text-white rounded-full shadow-md hover:bg-accent-dark transition-transform transform hover:scale-105"
+                >
+                  {tech}
+                </span>
+              ))}
+            </div>
+          </div>
+          
+          {/* Giving Back */}
+          <div>
+            <h3 className="text-2xl font-semibold text-gray-800 dark:text-white mb-4">
+              How I'm Giving Back
+            </h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+              <div className="bg-gray-900 text-gray-200 p-6 rounded-lg shadow-md border border-accent">
+                <h5 className="text-xl font-semibold mb-2">Volunteer at Cyber Peace Institute:</h5> Helping NGOs improve their security posture.
+              </div>
+              <div className="bg-gray-900 text-gray-200 p-6 rounded-lg shadow-md border border-accent">
+                <h5 className="text-xl font-semibold mb-2">Mentor at University of Washington's iSchool:</h5> Guiding university students to achieve their goals.
+              </div>
+              <div className="bg-gray-900 text-gray-200 p-6 rounded-lg shadow-md border border-accent">
+                <h5 className="text-xl font-semibold mb-2">Vice President at Cloud Security Alliance:</h5> Building a community of cloud security practitioners.
+              </div>
+            </div>
           </div>
         </section>
+
+
 
 
         {/* Projects Section */}
@@ -104,7 +157,7 @@ export default function Home() {
             <ShieldCheckIcon className="h-6 w-6 text-accent mr-2" />
             <h2 className="text-3xl font-semibold">Experience</h2>
           </div>
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-6xl mx-auto">
             <ExperienceTimeline experiences={experiences} />
           </div>
            <div className="mt-6 text-center">

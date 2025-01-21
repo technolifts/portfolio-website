@@ -1,5 +1,4 @@
 // src/app/experience/page.tsx
-import Header from '@/components/Header';
 import ExperienceTimeline from '@/components/ExperienceTimeline';
 import { experiences } from '@/content/experience';
 

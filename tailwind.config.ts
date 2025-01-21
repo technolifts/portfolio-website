@@ -9,7 +9,10 @@ export default {
   theme: {
     extend: {
       colors: {
-        accent: '#52b788'
+        accent: '#52b788',
+        black: '#000000',
+        darkBackground: '#121212'
+
       },
       fontFamily: {
         'fira-code': ['Fira Code', 'monospace'],
