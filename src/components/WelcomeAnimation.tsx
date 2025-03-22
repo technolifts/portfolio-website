@@ -11,10 +11,10 @@ export default function WelcomeAnimation() {
     // Check if user has seen the animation before
     const hasSeenAnimation = localStorage.getItem('hasSeenWelcomeAnimation');
     
-    //if (hasSeenAnimation) {
-    //  setIsVisible(false);
-    //  return;
-    //}
+    if (hasSeenAnimation) {
+      setIsVisible(false);
+      return;
+    }
     
     // Show welcome for 2 seconds, then start puzzle animation
     const welcomeTimer = setTimeout(() => {
@@ -100,17 +100,20 @@ export default function WelcomeAnimation() {
             {puzzlePieces.map((piece, index) => (
               <motion.div
                 key={index}
-                className="absolute bg-gray-50 dark:bg-gray-900"
+                className="absolute bg-blue-500 dark:bg-blue-600"
                 style={{
                   width: `${100/gridSize}%`,
                   height: `${100/gridSize}%`,
                   top: `${piece.y * (100/gridSize)}%`,
                   left: `${piece.x * (100/gridSize)}%`,
+                  border: '1px solid rgba(255,255,255,0.1)',
                 }}
                 initial={{ 
                   opacity: 0,
                   scale: 0,
-                  rotate: Math.random() * 180 - 90
+                  rotate: Math.random() * 180 - 90,
+                  x: (Math.random() * 1000 - 500),
+                  y: (Math.random() * 1000 - 500)
                 }}
                 animate={showPuzzle ? { 
                   opacity: 1,
