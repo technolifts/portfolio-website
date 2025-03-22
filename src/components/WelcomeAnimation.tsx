@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export default function WelcomeAnimation() {
@@ -9,7 +9,7 @@ export default function WelcomeAnimation() {
   
   useEffect(() => {
     // Check if user has seen the animation before
-    const hasSeenAnimation = localStorage.getItem('hasSeenWelcomeAnimation');
+    //const hasSeenAnimation = localStorage.getItem('hasSeenWelcomeAnimation');
     
     // Uncomment this to prevent showing animation to returning visitors
     // if (hasSeenAnimation) {
@@ -17,16 +17,16 @@ export default function WelcomeAnimation() {
     //   return;
     // }
     
-    // Show welcome for 2.5 seconds, then start puzzle animation
+    // Show welcome for 2.0 seconds, then start puzzle animation
     const welcomeTimer = setTimeout(() => {
       setShowPuzzle(true);
-    }, 2500);
+    }, 2000);
     
-    // Hide animation after puzzle pieces complete (total 4.5s)
+    // Hide animation after puzzle pieces complete (total 3s)
     const hideTimer = setTimeout(() => {
       setIsVisible(false);
       localStorage.setItem('hasSeenWelcomeAnimation', 'true');
-    }, 4500);
+    }, 3000);
     
     return () => {
       clearTimeout(welcomeTimer);
@@ -34,15 +34,21 @@ export default function WelcomeAnimation() {
     };
   }, []);
 
-  // Create a grid of puzzle pieces
-  const puzzlePieces = [];
-  const gridSize = 8; // More pieces for a smoother effect
-  
-  for (let i = 0; i < gridSize; i++) {
-    for (let j = 0; j < gridSize; j++) {
-      puzzlePieces.push({ x: i, y: j });
+  // Create puzzle pieces grid
+  const generatePuzzlePieces = () => {
+    const pieces = [];
+    const gridSize = 8; // More pieces for a smoother effect
+    
+    for (let i = 0; i < gridSize; i++) {
+      for (let j = 0; j < gridSize; j++) {
+        pieces.push({ x: i, y: j });
+      }
     }
-  }
+    
+    return pieces;
+  };
+  
+  const puzzlePieces = generatePuzzlePieces();
   
   return (
     <AnimatePresence>
@@ -106,10 +112,10 @@ export default function WelcomeAnimation() {
                 key={index}
                 className="absolute bg-gray-50 dark:bg-gray-900"
                 style={{
-                  width: `${100/gridSize}%`,
-                  height: `${100/gridSize}%`,
-                  top: `${piece.y * (100/gridSize)}%`,
-                  left: `${piece.x * (100/gridSize)}%`,
+                  width: `${100/8}%`,
+                  height: `${100/8}%`,
+                  top: `${piece.y * (100/8)}%`,
+                  left: `${piece.x * (100/8)}%`,
                   border: '1px solid rgba(255,255,255,0.05)',
                   zIndex: 40,
                 }}

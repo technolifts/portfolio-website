@@ -1,6 +1,6 @@
-// src/components/ProjectCard.tsx
 import { CodeBracketIcon, GlobeAltIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
+import Image from 'next/image';
 import type { Project } from '@/content/projects';
 
 interface ProjectCardProps {
@@ -11,11 +11,13 @@ export default function ProjectCard({ project }: ProjectCardProps) {
   return (
     <div className="card hover:shadow-lg transition-all bg-white dark:bg-gray-800 rounded-lg p-6">
       {project.imageUrl && (
-        <div className="aspect-video w-full mb-4 rounded-lg overflow-hidden">
-          <img
+        <div className="aspect-video w-full mb-4 rounded-lg overflow-hidden relative">
+          <Image
             src={project.imageUrl}
             alt={project.title}
-            className="w-full h-full object-cover rounded-lg"
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            className="object-cover rounded-lg"
           />
         </div>
       )}
