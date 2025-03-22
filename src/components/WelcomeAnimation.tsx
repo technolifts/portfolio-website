@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 export default function WelcomeAnimation() {
   const [isVisible, setIsVisible] = useState(true);
+  const [showPuzzle, setShowPuzzle] = useState(false);
   
   useEffect(() => {
     // Check if user has seen the animation before
@@ -15,29 +16,54 @@ export default function WelcomeAnimation() {
     //  return;
     //}
     
-    // Hide animation after 4 seconds
-    const timer = setTimeout(() => {
+    // Show welcome for 2 seconds, then start puzzle animation
+    const welcomeTimer = setTimeout(() => {
+      setShowPuzzle(true);
+    }, 2000);
+    
+    // Hide animation after puzzle pieces complete (total 3.5s)
+    const hideTimer = setTimeout(() => {
       setIsVisible(false);
       localStorage.setItem('hasSeenWelcomeAnimation', 'true');
-    }, 3000);
+    }, 3500);
     
-    return () => clearTimeout(timer);
+    return () => {
+      clearTimeout(welcomeTimer);
+      clearTimeout(hideTimer);
+    };
   }, []);
+
+  // Create a 5x5 grid of puzzle pieces
+  const puzzlePieces = [];
+  const gridSize = 5;
+  
+  for (let i = 0; i < gridSize; i++) {
+    for (let j = 0; j < gridSize; j++) {
+      puzzlePieces.push({ x: i, y: j });
+    }
+  }
   
   return (
     <AnimatePresence>
       {isVisible && (
         <motion.div 
-          className="fixed inset-0 z-50 flex items-center justify-center bg-gray-50 dark:bg-gray-900"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-gray-50 dark:bg-gray-900 overflow-hidden"
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.3 }}
         >
+          {/* Welcome Text */}
           <motion.div 
-            className="text-center"
+            className="text-center absolute z-10"
             initial={{ scale: 0.8, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 0.5 }}
+            animate={{ 
+              scale: 1, 
+              opacity: showPuzzle ? 0 : 1,
+            }}
+            transition={{ 
+              duration: 0.5,
+              opacity: { duration: 0.3 }
+            }}
           >
             <motion.h1 
               className="text-4xl md:text-6xl font-bold text-gray-800 dark:text-white mb-4"
@@ -68,6 +94,41 @@ export default function WelcomeAnimation() {
               <span className="inline-block h-3 w-3 rounded-full bg-blue-500 animate-pulse" style={{ animationDelay: '0.4s' }}></span>
             </motion.div>
           </motion.div>
+          
+          {/* Puzzle Pieces */}
+          <div className="absolute inset-0">
+            {puzzlePieces.map((piece, index) => (
+              <motion.div
+                key={index}
+                className="absolute bg-gray-50 dark:bg-gray-900"
+                style={{
+                  width: `${100/gridSize}%`,
+                  height: `${100/gridSize}%`,
+                  top: `${piece.y * (100/gridSize)}%`,
+                  left: `${piece.x * (100/gridSize)}%`,
+                }}
+                initial={{ 
+                  opacity: 0,
+                  scale: 0,
+                  rotate: Math.random() * 180 - 90
+                }}
+                animate={showPuzzle ? { 
+                  opacity: 1,
+                  scale: 1,
+                  rotate: 0,
+                  x: 0,
+                  y: 0
+                } : {}}
+                transition={{ 
+                  duration: 0.7,
+                  delay: showPuzzle ? 0.5 + (Math.random() * 0.5) : 0,
+                  type: "spring",
+                  stiffness: 200,
+                  damping: 20
+                }}
+              />
+            ))}
+          </div>
         </motion.div>
       )}
     </AnimatePresence>
