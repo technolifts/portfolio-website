@@ -8,6 +8,9 @@ export default function ThemeToggle() {
   const [isDarkMode, setIsDarkMode] = useState(true);
 
   useEffect(() => {
+    // Check if we're in the browser environment
+    if (typeof window === 'undefined') return;
+    
     // Check for the user's preferred theme in localStorage or use dark mode by default
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme) {
@@ -21,17 +24,20 @@ export default function ThemeToggle() {
       // Set default to dark mode
       setIsDarkMode(true);
       document.documentElement.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
     }
   }, []);
 
   const toggleTheme = () => {
-    setIsDarkMode(!isDarkMode);
-    if (isDarkMode) {
-      document.documentElement.classList.remove('dark');
-      localStorage.setItem('theme', 'light');
-    } else {
+    const newIsDarkMode = !isDarkMode;
+    setIsDarkMode(newIsDarkMode);
+    
+    if (newIsDarkMode) {
       document.documentElement.classList.add('dark');
       localStorage.setItem('theme', 'dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
     }
   };
 
