@@ -26,7 +26,7 @@ export default function WelcomeAnimation() {
     const hideTimer = setTimeout(() => {
       setIsVisible(false);
       localStorage.setItem('hasSeenWelcomeAnimation', 'true');
-    }, 3500);
+    }, 2000);
     
     return () => {
       clearTimeout(welcomeTimer);
