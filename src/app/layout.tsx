@@ -22,7 +22,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} text-gray-200`}>
+      <body className={`${inter.className} text-gray-200 bg-black`}>
         <WelcomeAnimation />
         <ParticleBackground />
         <Header />

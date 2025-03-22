@@ -60,7 +60,7 @@ export default function WelcomeAnimation() {
           transition={{ duration: 0.3 }}
         >
           {/* Overlay that will be revealed as pieces fall away */}
-          <div className="absolute inset-0 bg-gray-50 dark:bg-gray-900" />
+          <div className="absolute inset-0 bg-black" />
           
           {/* Welcome Text */}
           <motion.div 
@@ -110,7 +110,7 @@ export default function WelcomeAnimation() {
             {puzzlePieces.map((piece, index) => (
               <motion.div
                 key={index}
-                className="absolute bg-gray-50 dark:bg-gray-900"
+                className="absolute bg-black"
                 style={{
                   width: `${100/8}%`,
                   height: `${100/8}%`,
