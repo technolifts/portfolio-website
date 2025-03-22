@@ -7,8 +7,7 @@
   body {
     /*@apply bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100; /* Dark background, light text by default */
     /*background-image: radial-gradient(circle, rgba(40, 40, 40, 0.5) 0%, rgba(0, 0, 0, 0.8) 100%);*/
-    @apply bg-green-600 text-gray-200;
-    background-color: #777777;
+    @apply text-gray-200;
     font-family: 'Roboto', sans-serif;
   }
 
@@ -85,17 +84,70 @@
     animation: skeleton-gradient 1.5s linear infinite;
   }
 
+  .animated-gradient {
+    background: linear-gradient(-45deg, #1a2a3a, #2c3e50, #34495e, #2c3e50);
+    background-size: 400% 400%;
+    animation: gradient-animation 15s ease infinite;
+  }
+
+  .animated-gradient-accent {
+    background: linear-gradient(-45deg, #1a2a3a, #2c3e50, #3498db, #2980b9);
+    background-size: 400% 400%;
+    animation: gradient-animation 15s ease infinite;
+  }
+
+  .glass-effect {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .text-glow {
+    text-shadow: 0 0 10px rgba(168, 255, 120, 0.5);
+  }
+
+  .card-hover-effect {
+    transition: all 0.3s ease;
+  }
+  
+  .card-hover-effect:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  }
+
   @keyframes skeleton-gradient {
     0% {
       background-position: 0% 50%;
     }
-
     50% {
       background-position: 100% 50%;
     }
-
     100% {
       background-position: 0% 50%;
     }
+  }
+
+  @keyframes gradient-animation {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  
+  /* Subtle floating animation */
+  .float {
+    animation: floating 3s ease-in-out infinite;
+  }
+  
+  @keyframes floating {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
   }
 }

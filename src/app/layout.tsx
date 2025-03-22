@@ -4,6 +4,7 @@ import type { Metadata } from 'next'
 import Footer from '@/components/Footer'
 import Header from '@/components/Header'
 import WelcomeAnimation from '@/components/WelcomeAnimation'
+import ParticleBackground from '@/components/ParticleBackground'
 import '@/styles/globals.css'
 import { SpeedInsights } from "@vercel/speed-insights/next"
 
@@ -21,10 +22,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} bg-black text-gray-200`}>
+      <body className={`${inter.className} text-gray-200`}>
         <WelcomeAnimation />
+        <ParticleBackground />
         <Header />
-        <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+        <div className="min-h-screen animated-gradient">
           {children}
           <SpeedInsights />
         </div>
