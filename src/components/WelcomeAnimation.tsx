@@ -17,16 +17,16 @@ export default function WelcomeAnimation() {
     //  return;
     //}
     
-    // Show welcome for 2 seconds, then start puzzle animation
+    // Show welcome for 2.5 seconds, then start puzzle animation
     const welcomeTimer = setTimeout(() => {
       setShowPuzzle(true);
-    }, 2000);
+    }, 2500);
     
-    // Hide animation after puzzle pieces complete (total 3.5s)
+    // Hide animation after puzzle pieces complete (total 4.5s)
     const hideTimer = setTimeout(() => {
       setIsVisible(false);
       localStorage.setItem('hasSeenWelcomeAnimation', 'true');
-    }, 2000);
+    }, 4500);
     
     return () => {
       clearTimeout(welcomeTimer);
@@ -58,7 +58,7 @@ export default function WelcomeAnimation() {
           
           {/* Welcome Text */}
           <motion.div 
-            className="text-center absolute z-10"
+            className="text-center absolute z-50"
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ 
               scale: 1, 
@@ -66,7 +66,7 @@ export default function WelcomeAnimation() {
             }}
             transition={{ 
               duration: 0.5,
-              opacity: { duration: 0.3 }
+              opacity: { duration: 0.8 }
             }}
           >
             <motion.h1 
@@ -129,7 +129,7 @@ export default function WelcomeAnimation() {
                 } : {}}
                 transition={{ 
                   duration: 1.2,
-                  delay: showPuzzle ? 0.2 + (Math.random() * 0.8) : 0,
+                  delay: showPuzzle ? 0.8 + (Math.random() * 0.8) : 0,
                   type: "tween",
                   ease: [0.2, 0.8, 0.2, 1]
                 }}
