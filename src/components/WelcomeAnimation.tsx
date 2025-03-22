@@ -10,16 +10,16 @@ export default function WelcomeAnimation() {
     // Check if user has seen the animation before
     const hasSeenAnimation = localStorage.getItem('hasSeenWelcomeAnimation');
     
-    if (hasSeenAnimation) {
-      setIsVisible(false);
-      return;
-    }
+    //if (hasSeenAnimation) {
+    //  setIsVisible(false);
+    //  return;
+    //}
     
     // Hide animation after 4 seconds
     const timer = setTimeout(() => {
       setIsVisible(false);
       localStorage.setItem('hasSeenWelcomeAnimation', 'true');
-    }, 4000);
+    }, 3000);
     
     return () => clearTimeout(timer);
   }, []);
