@@ -11,11 +11,11 @@ export default function WelcomeAnimation() {
     // Check if user has seen the animation before
     const hasSeenAnimation = localStorage.getItem('hasSeenWelcomeAnimation');
     
-    // Keep this section commented out
-    //if (hasSeenAnimation) {
-    //  setIsVisible(false);
-    //  return;
-    //}
+    // Uncomment this to prevent showing animation to returning visitors
+    // if (hasSeenAnimation) {
+    //   setIsVisible(false);
+    //   return;
+    // }
     
     // Show welcome for 2.5 seconds, then start puzzle animation
     const welcomeTimer = setTimeout(() => {
