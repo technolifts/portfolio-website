@@ -48,6 +48,15 @@ export interface Project {
         featured: true,
         category: 'security'
     },
+    {
+        id: 'presence.ai',
+        title: 'Presence AI - Your Personal AI Voice Agent',
+        description: 'Most personal portfolios rely on static text and design to stand out. Presence ai transforms this experience by letting visitors interact with you through conversation — just like a phone call. Answer a few questions with audio recordings, and your custom AI agent responds to visitors’ questions using your voice, personality, and unique information.',
+        technologies: ['Python', 'Anthropic', 'ElevenLabs', 'Flask'],
+        githubUrl: 'https://github.com/technolifts/presence',
+        featured: true,
+        category: 'security'
+    }
     
     // Add more projects as needed
   ];

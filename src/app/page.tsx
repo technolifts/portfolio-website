@@ -71,7 +71,7 @@ export default async function Home() {
               Technologies
             </h3>
             <div className="flex flex-wrap gap-4">
-              {['Python', 'AWS', 'Terraform', 'Django', 'SQL'].map((tech) => (
+              {['Python', 'JavaScript', 'TypeScript', 'React', 'AWS', 'Terraform', 'Django', 'FastAPI', 'SQL'].map((tech) => (
                 <span
                   key={tech}
                   className="px-4 py-2 bg-accent text-white rounded-full shadow-md hover:bg-accent-dark transition-transform transform hover:scale-105"
