@@ -22,8 +22,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body className={`${inter.className} text-gray-900 dark:text-gray-200 bg-white dark:bg-black`}>
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${inter.className} text-gray-900 dark:text-gray-200 bg-white dark:bg-black transition-colors duration-300`}>
         <WelcomeAnimation />
         <ParticleBackground />
         <div className="fixed top-4 right-4 z-50">

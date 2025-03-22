@@ -5,41 +5,70 @@ import { useEffect, useState } from 'react';
 import { SunIcon, MoonIcon } from '@heroicons/react/24/outline';
 
 export default function ThemeToggle() {
-  const [isDarkMode, setIsDarkMode] = useState(true);
+  // Start with undefined to prevent hydration mismatch
+  const [isDarkMode, setIsDarkMode] = useState<boolean | undefined>(undefined);
 
   useEffect(() => {
     // Check if we're in the browser environment
     if (typeof window === 'undefined') return;
     
-    // Check for the user's preferred theme in localStorage or use dark mode by default
+    // Check for the user's preferred theme in localStorage
     const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) {
-      setIsDarkMode(savedTheme === 'dark');
-      if (savedTheme === 'dark') {
-        document.documentElement.classList.add('dark');
-      } else {
-        document.documentElement.classList.remove('dark');
-      }
-    } else {
-      // Set default to dark mode
-      setIsDarkMode(true);
-      document.documentElement.classList.add('dark');
-      localStorage.setItem('theme', 'dark');
-    }
-  }, []);
-
-  const toggleTheme = () => {
-    const newIsDarkMode = !isDarkMode;
-    setIsDarkMode(newIsDarkMode);
     
-    if (newIsDarkMode) {
+    // Check system preference if no saved theme
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    
+    // Set initial theme based on saved preference or system preference
+    const initialDarkMode = savedTheme 
+      ? savedTheme === 'dark'
+      : prefersDark;
+      
+    setIsDarkMode(initialDarkMode);
+    
+    // Apply the theme to the document
+    if (initialDarkMode) {
       document.documentElement.classList.add('dark');
       localStorage.setItem('theme', 'dark');
     } else {
       document.documentElement.classList.remove('dark');
       localStorage.setItem('theme', 'light');
     }
+
+    // Add debugging
+    console.log('[ThemeToggle] Initial setup:', { 
+      savedTheme, 
+      prefersDark, 
+      initialDarkMode,
+      classes: document.documentElement.classList.contains('dark') ? 'has dark' : 'no dark'
+    });
+  }, []);
+
+  const toggleTheme = () => {
+    // Only toggle if isDarkMode is defined
+    if (isDarkMode !== undefined) {
+      const newIsDarkMode = !isDarkMode;
+      setIsDarkMode(newIsDarkMode);
+      
+      if (newIsDarkMode) {
+        document.documentElement.classList.add('dark');
+        localStorage.setItem('theme', 'dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+        localStorage.setItem('theme', 'light');
+      }
+
+      // Add debugging
+      console.log('[ThemeToggle] Theme toggled:', { 
+        newIsDarkMode,
+        classes: document.documentElement.classList.contains('dark') ? 'has dark' : 'no dark'
+      });
+    }
   };
+
+  // Don't render until we know the theme to prevent flash
+  if (isDarkMode === undefined) {
+    return <div className="p-2 rounded-full bg-transparent"></div>; // Placeholder to maintain layout
+  }
 
   return (
     <button

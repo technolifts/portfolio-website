@@ -14,7 +14,7 @@ export default function ParticleBackground() {
     
     let particles: Particle[] = [];
     let animationFrameId: number;
-    let mouse = { x: null as number | null, y: null as number | null, radius: 150 };
+    const mouse = { x: null as number | null, y: null as number | null, radius: 150 };
     
     // Set canvas dimensions
     const resizeCanvas = () => {
@@ -44,8 +44,9 @@ export default function ParticleBackground() {
       color: string;
       
       constructor() {
-        this.x = Math.random() * canvas.width;
-        this.y = Math.random() * canvas.height;
+        // Use non-null assertion since we've checked canvas is not null above
+        this.x = Math.random() * canvas!.width;
+        this.y = Math.random() * canvas!.height;
         this.size = Math.random() * 3 + 1;
         this.baseX = this.x;
         this.baseY = this.y;

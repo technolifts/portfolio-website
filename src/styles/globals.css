@@ -5,9 +5,7 @@
 
 @layer base {
   body {
-    /*@apply bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100; /* Dark background, light text by default */
-    /*background-image: radial-gradient(circle, rgba(40, 40, 40, 0.5) 0%, rgba(0, 0, 0, 0.8) 100%);*/
-    @apply text-gray-200;
+    @apply text-gray-800 bg-gray-50 dark:text-gray-200 dark:bg-black transition-colors duration-300;
     font-family: 'Roboto', sans-serif;
   }
 
@@ -18,7 +16,7 @@
   h5,
   h6 {
     font-family: 'Fira Code', monospace;
-    @apply font-bold mb-4;
+    @apply font-bold mb-4 text-gray-900 dark:text-gray-100;
   }
 
   h1 {
@@ -34,7 +32,7 @@
   }
 
   p {
-    @apply mb-4 text-black dark:text-gray-300;
+    @apply mb-4 text-gray-700 dark:text-gray-300;
   }
 }
 
@@ -58,12 +56,20 @@
   }
 
   .card {
-    @apply bg-gray-100 dark:bg-gray-800 rounded-lg shadow-md p-6 transition-all duration-300 ease-in-out; /* Dark card with transition */
+    @apply bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 transition-all duration-300 ease-in-out border border-gray-200 dark:border-gray-700;
   }
 
   .card:hover {
     transform: translateY(-3px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    @apply shadow-lg;
+  }
+  
+  .section {
+    @apply py-12 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800;
+  }
+  
+  .section-alt {
+    @apply py-12 bg-gray-100 dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700;
   }
 }
 
@@ -79,30 +85,30 @@
   }
 
   .skeleton-loading {
-    background: linear-gradient(90deg, #222, #444, #222);
+    background: linear-gradient(90deg, #f0f0f0, #e0e0e0, #f0f0f0);
     background-size: 200% 200%;
     animation: skeleton-gradient 1.5s linear infinite;
+    @apply dark:bg-gradient-to-r dark:from-gray-700 dark:via-gray-600 dark:to-gray-700;
   }
 
   .animated-gradient {
-    @apply bg-white dark:bg-black;
+    @apply bg-gray-50 dark:bg-black;
   }
 
   .animated-gradient-accent {
-    background: linear-gradient(-45deg, #1a2a3a, #2c3e50, #3498db, #2980b9);
+    background: linear-gradient(-45deg, #f5f7fa, #e4e7eb, #cbd2d9, #9aa5b1);
     background-size: 400% 400%;
     animation: gradient-animation 15s ease infinite;
+    @apply dark:bg-gradient-to-br dark:from-gray-900 dark:via-gray-800 dark:to-gray-900;
   }
 
   .glass-effect {
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    @apply bg-white/80 dark:bg-black/30 backdrop-blur-md border border-gray-200 dark:border-gray-700;
   }
 
   .text-glow {
-    text-shadow: 0 0 10px rgba(168, 255, 120, 0.5);
+    @apply text-accent;
+    text-shadow: 0 0 10px rgba(82, 183, 136, 0.5);
   }
 
   .card-hover-effect {
@@ -111,7 +117,21 @@
   
   .card-hover-effect:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    @apply shadow-xl;
+  }
+
+  /* Light mode specific utility classes */
+  .light-section {
+    @apply bg-white border-b border-gray-200;
+  }
+  
+  .light-section-alt {
+    @apply bg-gray-100 border-b border-gray-200;
+  }
+  
+  /* Content dividers */
+  .content-divider {
+    @apply my-8 h-px bg-gray-200 dark:bg-gray-700;
   }
 
   @keyframes skeleton-gradient {
