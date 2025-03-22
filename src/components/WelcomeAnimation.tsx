@@ -34,9 +34,9 @@ export default function WelcomeAnimation() {
     };
   }, []);
 
-  // Create a 5x5 grid of puzzle pieces
+  // Create a grid of puzzle pieces
   const puzzlePieces = [];
-  const gridSize = 5;
+  const gridSize = 8; // More pieces for a smoother effect
   
   for (let i = 0; i < gridSize; i++) {
     for (let j = 0; j < gridSize; j++) {
@@ -48,11 +48,14 @@ export default function WelcomeAnimation() {
     <AnimatePresence>
       {isVisible && (
         <motion.div 
-          className="fixed inset-0 z-50 flex items-center justify-center bg-gray-50 dark:bg-gray-900 overflow-hidden"
+          className="fixed inset-0 z-50 flex items-center justify-center overflow-hidden"
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.3 }}
         >
+          {/* Overlay that will be revealed as pieces fall away */}
+          <div className="absolute inset-0 bg-gray-50 dark:bg-gray-900" />
+          
           {/* Welcome Text */}
           <motion.div 
             className="text-center absolute z-10"
@@ -96,39 +99,39 @@ export default function WelcomeAnimation() {
             </motion.div>
           </motion.div>
           
-          {/* Puzzle Pieces */}
+          {/* Puzzle Pieces - these are covering the page and will fall away */}
           <div className="absolute inset-0">
             {puzzlePieces.map((piece, index) => (
               <motion.div
                 key={index}
-                className="absolute bg-blue-500 dark:bg-blue-600"
+                className="absolute bg-gray-50 dark:bg-gray-900"
                 style={{
                   width: `${100/gridSize}%`,
                   height: `${100/gridSize}%`,
                   top: `${piece.y * (100/gridSize)}%`,
                   left: `${piece.x * (100/gridSize)}%`,
-                  border: '1px solid rgba(255,255,255,0.1)',
+                  border: '1px solid rgba(255,255,255,0.05)',
+                  zIndex: 40,
                 }}
                 initial={{ 
-                  opacity: 0,
-                  scale: 0,
-                  rotate: Math.random() * 180 - 90,
-                  x: (Math.random() * 1000 - 500),
-                  y: (Math.random() * 1000 - 500)
-                }}
-                animate={showPuzzle ? { 
                   opacity: 1,
                   scale: 1,
                   rotate: 0,
                   x: 0,
                   y: 0
+                }}
+                animate={showPuzzle ? { 
+                  opacity: 0,
+                  scale: Math.random() * 0.5 + 0.5,
+                  rotate: Math.random() * 180 - 90,
+                  x: (Math.random() * 2000 - 1000),
+                  y: 1000 + Math.random() * 500,
                 } : {}}
                 transition={{ 
-                  duration: 0.7,
-                  delay: showPuzzle ? 0.5 + (Math.random() * 0.5) : 0,
-                  type: "spring",
-                  stiffness: 200,
-                  damping: 20
+                  duration: 1.2,
+                  delay: showPuzzle ? 0.2 + (Math.random() * 0.8) : 0,
+                  type: "tween",
+                  ease: [0.2, 0.8, 0.2, 1]
                 }}
               />
             ))}
