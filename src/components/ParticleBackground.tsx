@@ -14,6 +14,7 @@ export default function ParticleBackground() {
     
     let particles: Particle[] = [];
     let animationFrameId: number;
+    let mouse = { x: null as number | null, y: null as number | null, radius: 150 };
     
     // Set canvas dimensions
     const resizeCanvas = () => {
@@ -24,33 +25,62 @@ export default function ParticleBackground() {
     window.addEventListener('resize', resizeCanvas);
     resizeCanvas();
     
+    // Track mouse position
+    const handleMouseMove = (e: MouseEvent) => {
+      mouse.x = e.x;
+      mouse.y = e.y;
+    };
+    
+    window.addEventListener('mousemove', handleMouseMove);
+    
     // Particle class
     class Particle {
       x: number;
       y: number;
       size: number;
-      speedX: number;
-      speedY: number;
+      baseX: number;
+      baseY: number;
+      density: number;
       color: string;
       
       constructor() {
         this.x = Math.random() * canvas.width;
         this.y = Math.random() * canvas.height;
-        this.size = Math.random() * 2 + 0.5;
-        this.speedX = Math.random() * 0.3 - 0.15;
-        this.speedY = Math.random() * 0.3 - 0.15;
-        this.color = 'rgba(82, 183, 136, 0.3)'; // Using your theme green color
+        this.size = Math.random() * 3 + 1;
+        this.baseX = this.x;
+        this.baseY = this.y;
+        this.density = (Math.random() * 30) + 1;
+        this.color = 'rgba(82, 183, 136, 0.7)'; // Brighter green
       }
       
       update() {
-        this.x += this.speedX;
-        this.y += this.speedY;
-        
-        if (this.x > canvas.width) this.x = 0;
-        else if (this.x < 0) this.x = canvas.width;
-        
-        if (this.y > canvas.height) this.y = 0;
-        else if (this.y < 0) this.y = canvas.height;
+        // Check mouse position
+        if (mouse.x !== null && mouse.y !== null) {
+          const dx = mouse.x - this.x;
+          const dy = mouse.y - this.y;
+          const distance = Math.sqrt(dx * dx + dy * dy);
+          
+          if (distance < mouse.radius) {
+            const forceDirectionX = dx / distance;
+            const forceDirectionY = dy / distance;
+            const force = (mouse.radius - distance) / mouse.radius;
+            
+            const directionX = forceDirectionX * force * this.density;
+            const directionY = forceDirectionY * force * this.density;
+            
+            this.x -= directionX;
+            this.y -= directionY;
+          } else {
+            if (this.x !== this.baseX) {
+              const dx = this.x - this.baseX;
+              this.x -= dx / 10;
+            }
+            if (this.y !== this.baseY) {
+              const dy = this.y - this.baseY;
+              this.y -= dy / 10;
+            }
+          }
+        }
       }
       
       draw() {
@@ -65,7 +95,7 @@ export default function ParticleBackground() {
     // Initialize particles
     const init = () => {
       particles = [];
-      const particleCount = Math.min(Math.floor(window.innerWidth / 15), 80);
+      const particleCount = Math.min(Math.floor(window.innerWidth / 10), 150);
       
       for (let i = 0; i < particleCount; i++) {
         particles.push(new Particle());
@@ -99,7 +129,7 @@ export default function ParticleBackground() {
           
           if (distance < maxDistance) {
             const opacity = 1 - (distance / maxDistance);
-            ctx.strokeStyle = `rgba(82, 183, 136, ${opacity * 0.2})`;
+            ctx.strokeStyle = `rgba(82, 183, 136, ${opacity * 0.4})`;
             ctx.lineWidth = 1;
             ctx.beginPath();
             ctx.moveTo(particles[i].x, particles[i].y);
@@ -116,6 +146,7 @@ export default function ParticleBackground() {
     // Cleanup
     return () => {
       window.removeEventListener('resize', resizeCanvas);
+      window.removeEventListener('mousemove', handleMouseMove);
       cancelAnimationFrame(animationFrameId);
     };
   }, []);
@@ -123,7 +154,7 @@ export default function ParticleBackground() {
   return (
     <canvas 
       ref={canvasRef} 
-      className="fixed inset-0 -z-10 opacity-30 pointer-events-none"
+      className="fixed inset-0 z-0 opacity-70 pointer-events-none"
     />
   );
 }
