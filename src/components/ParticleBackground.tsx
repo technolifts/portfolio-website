@@ -50,7 +50,10 @@ export default function ParticleBackground() {
         this.baseX = this.x;
         this.baseY = this.y;
         this.density = (Math.random() * 30) + 1;
-        this.color = 'rgba(82, 183, 136, 0.7)'; // Brighter green
+        // Different colors for light/dark mode
+        this.color = document.documentElement.classList.contains('dark') 
+          ? 'rgba(82, 183, 136, 0.7)' // Brighter green for dark mode
+          : 'rgba(52, 153, 106, 0.5)'; // Darker green for light mode
       }
       
       update() {
@@ -129,7 +132,10 @@ export default function ParticleBackground() {
           
           if (distance < maxDistance) {
             const opacity = 1 - (distance / maxDistance);
-            ctx.strokeStyle = `rgba(82, 183, 136, ${opacity * 0.4})`;
+            // Different colors for light/dark mode
+            ctx.strokeStyle = document.documentElement.classList.contains('dark')
+              ? `rgba(82, 183, 136, ${opacity * 0.4})`
+              : `rgba(52, 153, 106, ${opacity * 0.3})`;
             ctx.lineWidth = 1;
             ctx.beginPath();
             ctx.moveTo(particles[i].x, particles[i].y);

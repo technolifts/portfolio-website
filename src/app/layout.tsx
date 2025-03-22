@@ -5,6 +5,7 @@ import Footer from '@/components/Footer'
 import Header from '@/components/Header'
 import WelcomeAnimation from '@/components/WelcomeAnimation'
 import ParticleBackground from '@/components/ParticleBackground'
+import ThemeToggle from '@/components/ThemeToggle'
 import '@/styles/globals.css'
 import { SpeedInsights } from "@vercel/speed-insights/next"
 
@@ -22,9 +23,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} text-gray-200 bg-black`}>
+      <body className={`${inter.className} text-gray-900 dark:text-gray-200 bg-white dark:bg-black`}>
         <WelcomeAnimation />
         <ParticleBackground />
+        <div className="fixed top-4 right-4 z-50">
+          <ThemeToggle />
+        </div>
         <Header />
         <div className="min-h-screen animated-gradient">
           {children}

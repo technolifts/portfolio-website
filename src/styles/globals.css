@@ -85,7 +85,7 @@
   }
 
   .animated-gradient {
-    background: black;
+    @apply bg-white dark:bg-black;
   }
 
   .animated-gradient-accent {
