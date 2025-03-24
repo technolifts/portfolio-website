@@ -1,6 +1,6 @@
 ---
 title: "Becoming Powerful in the Age of AI Agents"
-date: "2025-02-22"
+date: "2025-03-22"
 excerpt: "As agentic AI becomes more sophisticated I believe the people with the following characteristics will reap the most benefits and come out on top."
 tags: ["Software Engineering", "AI", "AI Agents", "Future"]
 ---
