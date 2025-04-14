@@ -43,7 +43,7 @@ export default function Footer() {
             <h3 className="text-lg font-semibold mb-4 text-gray-800 dark:text-white">Connect</h3>
             <div className="flex space-x-4">
               <Link
-                href="https://github.com/yourusername"
+                href="https://github.com/technolifts"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-600 dark:text-gray-400 hover:text-accent"
@@ -51,7 +51,7 @@ export default function Footer() {
                 <GithubIcon className="h-6 w-6" />
               </Link>
               <Link
-                href="https://linkedin.com/in/yourusername"
+                href="https://www.linkedin.com/in/ryanantioniocarroll/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-600 dark:text-gray-400 hover:text-accent"
@@ -59,7 +59,7 @@ export default function Footer() {
                 <LinkedinIcon className="h-6 w-6" />
               </Link>
               <Link
-                href="https://twitter.com/yourusername"
+                href="https://x.com/techno_lifts"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-600 dark:text-gray-400 hover:text-accent"
