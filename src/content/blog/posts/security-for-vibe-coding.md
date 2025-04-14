@@ -7,7 +7,7 @@ tags: ["Vibe Coding", "AI Security", "Shift-Left"]
 
 # Can Simple Security Rules Save Your AI-Generated Code? I Tested It So You Don't Have To
 
-![Security Rules in AI Coding](/public/images/synk-projects-scans.png "AI Security Experiment")
+![Security Rules in AI Coding](/images/synk-projects-scans.png "AI Security Experiment")
 
 If you've been following the AI wave you likely have heard of "vibe coding" — building applications completely from AI generated code, often without even reading a single line of code generated. Well it turns out doing so introduces a ton of security vulnerabilities.
 
@@ -38,7 +38,7 @@ Use an AI assisted coding tool to build a web app, twice. The first time with no
 - No security rules: 2 Critical, 8 High, 4 Medium, 82 Low
 - Security rules: 2 Critical, 9 High, 4 Medium, 52 Low
 
-![Comparison of Security Findings](/public/images/path-traversal.png "SAST Results Comparison")
+![Comparison of Security Findings](/images/path-traversal.png "SAST Results Comparison")
 
 ## Analysis
 
