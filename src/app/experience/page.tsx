@@ -25,7 +25,7 @@ export default function ExperiencePage() {
             <div className="card">
               <h3 className="text-xl font-semibold mb-4">Security</h3>
                <div className="flex flex-wrap gap-2">
-                {['Penetration Testing', 'SAST/DAST', 'Cloud Security', 'Zero Trust', 'Threat Modeling'].map((skill) => (
+                {['Application Security', 'CSPM', 'Cloud Security', 'Zero Trust', 'Threat Modeling', "AI Security", "Principle of Least Privledge"].map((skill) => (
                  <span
                     key={skill}
                     className="px-3 py-1 text-sm bg-gray-100 dark:bg-gray-700 rounded-full"
@@ -39,7 +39,7 @@ export default function ExperiencePage() {
             <div className="card">
               <h3 className="text-xl font-semibold mb-4">Development</h3>
               <div className="flex flex-wrap gap-2">
-                {['TypeScript', 'Python', 'React', 'Node.js', 'AWS', 'Docker', 'Kubernetes'].map((skill) => (
+                {['TypeScript', 'Python', 'React', 'Node.js', 'AWS', 'Docker'].map((skill) => (
                   <span
                     key={skill}
                     className="px-3 py-1 text-sm bg-gray-100 dark:bg-gray-700 rounded-full"

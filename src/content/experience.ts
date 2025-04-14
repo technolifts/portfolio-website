@@ -22,7 +22,7 @@ export interface Experience {
       description: [
         'Security GTM strategist',
         'Customer zero for security tools and inititaives',
-        'Head of Adobe Security Champion Program',
+        'Owner of Adobe Security Champion Program',
         'Various rotations with DevSecOps team, Red Team and Cloud Security Team'
       ],
       technologies: ['AWS', 'Python', 'Terraform', 'Wiz', 'Databricks', 'GitHub', 'SQL'],
@@ -36,8 +36,8 @@ export interface Experience {
       startDate: '2022',
       endDate: '2023',
       description: [
-        'Security Evangelism through the business',
-        'Security Developer Relations'
+        'Security evangelism throughout the business',
+        'Security Developer Relations for our engineers'
       ],
       technologies: ['Communications', 'Technical Writing'],
       type: 'security'
